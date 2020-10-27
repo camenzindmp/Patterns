@@ -39,10 +39,10 @@ public class CardDeliveryTest {
         $("[type=button] [class='button__text']").click();
         $("[data-test-id=success-notification]").waitUntil(Condition.visible, 3000);
         $("[data-test-id=date] [class='input__box'] [class='input__control']").doubleClick().sendKeys(Keys.BACK_SPACE); // очистка инпута даты;
-        LocalDate meetingDate2 = LocalDate.now().plusDays(9);  // вычисление текущей даты + 7 дней;
-        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("dd.MM.yyyy"); // перевод даты в нужный формат;
-        $("[data-test-id=date] [type=tel]").setValue(meetingDate2.format(formatter2)); // ввод даты в нужном формате в инпут;
+        LocalDate newMeetingDate = LocalDate.now().plusDays(9);  // вычисление текущей даты + 7 дней;
+        DateTimeFormatter newFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy"); // перевод даты в нужный формат;
+        $("[data-test-id=date] [type=tel]").setValue(newMeetingDate.format(newFormatter)); // ввод даты в нужном формате в инпут;
         String successText = $("[data-test-id=success-notification]").getText(); // получить текст и дату из нотификейшена;
-        assertEquals("Успешно!\nВстреча успешно запланирована на " + meetingDate2.format(formatter2), successText); // сравнить текст и дату из нотификейшена с ожидаемым текстом и текущей датой;
+        assertEquals("Успешно!\nВстреча успешно запланирована на " + newMeetingDate.format(newFormatter), successText); // сравнить текст и дату из нотификейшена с ожидаемым текстом и текущей датой;
     }
 }
