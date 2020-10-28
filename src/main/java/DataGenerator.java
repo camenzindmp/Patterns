@@ -1,22 +1,26 @@
-//import com.sun.security.ntlm.Client;
-//import org.junit.jupiter.api.BeforeEach;
-//
-//import java.util.Locale;
-//
-//public class DataGenerator {
-//    private DataGenerator() {
-//    }
-//
-//    public static class CardDeliveryForm {
-//        private CardDeliveryForm() {
-//        }
-//    }
-//
-//    public static ClientData generateByCard(String locale) {
-//        Faker faker = new Faker(new Locale("ru"));
-//        return new ClientData(
-//                faker.name().fullName()
-//        );
+import com.github.javafaker.Faker;
+
+import java.util.Locale;
+
+public class DataGenerator {
+    private DataGenerator() {
+    }
+
+    public static class CardDeliveryForm {
+        private CardDeliveryForm() {
+        }
+
+
+        public static ClientInfo generateByClient(String locale) {
+            Faker faker = new Faker(new Locale("ru"));
+            return new ClientInfo(
+                    faker.address().city(),
+                    faker.name().fullName(),
+                    faker.phone().fakeValuesService.numerify("7##########")
+            );
+        }
+    }
+}
 //
 //In your Java code
 //
