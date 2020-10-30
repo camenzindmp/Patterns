@@ -13,7 +13,6 @@ import java.util.Locale;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-// зашить сюда ломбок для генерации утилитного класса DataGenerator.
 
 public class CardDeliveryTest {
     private Faker faker;
