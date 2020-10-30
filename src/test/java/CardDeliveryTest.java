@@ -31,9 +31,6 @@ public class CardDeliveryTest {
         LocalDate meetingDate = LocalDate.now().plusDays(7);  // вычисление текущей даты + 7 дней;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy"); // перевод даты в нужный формат;
         $("[data-test-id=date] [type=tel]").setValue(meetingDate.format(formatter)); // ввод даты в нужном формате в инпут;
-//        FakeValuesService fakeValuesService = new FakeValuesService(
-//                new Locale("ru"), new RandomService());
-//        $("[data-test-id] [type=tel]").setValue(fakeValuesService.regexify("[1-29]{2}"));
         $("[data-test-id=name] [type=text]").setValue(faker.name().fullName());
         FakeValuesService fakeValuesService = new FakeValuesService(
                 new Locale("ru"), new RandomService());
