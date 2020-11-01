@@ -1,12 +1,28 @@
 import com.github.javafaker.Faker;
-import com.github.javafaker.service.FakeValuesService;
-import com.github.javafaker.service.RandomService;
 
 import java.time.LocalDate;
 import java.util.Locale;
+import java.util.Random;
+
 
 public class DataGenerator {
     private DataGenerator() {
+    }
+
+    static class ClientInfo {
+        public ClientInfo(String city, String fullName, String numerify, LocalDate plusDays) {
+        }
+
+        public ClientInfo(String fullName, String phoneNumber, LocalDate plusDays) {
+        }
+    }
+
+    public class CitiesArray {
+        private String[] cities = new String[]{"Москва","Казань", "Владивосток", "Екатеринбург", "Воронеж"};
+        private Random rand = new Random();
+        public String getRandomCity(){
+            return cities[rand.nextInt(4)];
+        }
     }
 
     public static class CardDeliveryForm {
@@ -15,12 +31,9 @@ public class DataGenerator {
 
         public static ClientInfo generateByClient(String locale) {
             Faker faker = new Faker(new Locale("ru"));
-            FakeValuesService fakeValuesService = new FakeValuesService(
-                    new Locale("ru"), new RandomService());
             return new ClientInfo(
-                    faker.address().city(),
                     faker.name().fullName(),
-                    fakeValuesService.numerify("7##########"),
+                    faker.phoneNumber().phoneNumber(),
                     LocalDate.now().plusDays(7)
             );
         }
