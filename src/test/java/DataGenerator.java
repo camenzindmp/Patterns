@@ -1,6 +1,7 @@
 import com.github.javafaker.Faker;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.Random;
 
@@ -10,19 +11,24 @@ public class DataGenerator {
     }
 
     static class ClientInfo {
-        public ClientInfo(String city, String fullName, String numerify, LocalDate plusDays) {
-        }
-
-        public ClientInfo(String fullName, String phoneNumber, LocalDate plusDays) {
+        public ClientInfo(String fullName, String phoneNumber1) {
         }
     }
 
     public class CitiesArray {
-        private String[] cities = new String[]{"Москва","Казань", "Владивосток", "Екатеринбург", "Воронеж"};
+        private String[] cities = new String[]{"Москва", "Казань", "Владивосток", "Екатеринбург", "Воронеж"};
         private Random rand = new Random();
-        public String getRandomCity(){
+
+        public String getRandomCity() {
             return cities[rand.nextInt(4)];
         }
+    }
+
+    public static DateGenerator {
+        LocalDate MeetingDate = LocalDate.now().plusDays(7);  // вычисление текущей даты + 7 дней;
+        DateTimeFormatter Formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        LocalDate newMeetingDate = LocalDate.now().plusDays(9);  // вычисление текущей даты + 9 дней;
+        DateTimeFormatter newFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
     }
 
     public static class CardDeliveryForm {
@@ -33,21 +39,9 @@ public class DataGenerator {
             Faker faker = new Faker(new Locale("ru"));
             return new ClientInfo(
                     faker.name().fullName(),
-                    faker.phoneNumber().phoneNumber(),
-                    LocalDate.now().plusDays(7)
+                    faker.phoneNumber().phoneNumber()
             );
         }
     }
 }
-//
-//In your Java code:
-//
-//        Faker faker = new Faker();
-//
-//        String name = faker.name().fullName(); // Miss Samanta Schmidt
-//        String firstName = faker.name().firstName(); // Emory
-//        String lastName = faker.name().lastName(); // Barton
-//
-//        String streetAddress = faker.address().streetAddress(); // 60018 Sawayn Brooks Suite 449
-//    }
 //}
