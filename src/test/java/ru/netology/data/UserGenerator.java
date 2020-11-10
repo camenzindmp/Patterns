@@ -42,7 +42,7 @@ public class UserGenerator {
         String[] cities = new String[] {"Москва", "Казань", "Владивосток", "Екатеринбург", "Воронеж"};
         Random generator = new Random();
         int randomIndex = generator.nextInt(cities.length);
-        ClientInfo.city = cities[randomIndex];
+        new ClientInfo().city = cities[randomIndex];
         return new ClientInfo().city;
         }
 
