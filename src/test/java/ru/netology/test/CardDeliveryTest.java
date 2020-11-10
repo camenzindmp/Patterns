@@ -15,7 +15,7 @@ public class CardDeliveryTest {
     @Test
     void successCase() {
         open("http://localhost:9999/");
-        val ClientInfo = UserGenerator.getClientInfo();
+        Object ClientInfo = UserGenerator.getClientInfo();
         $("[data-test-id=city] input[class=input__control]").setValue(UserGenerator.getClientInfo().getCity()); // берем рандомный город из массива CitiesArray;
         $("[data-test-id=date] [class='input__box'] [class='input__control']").doubleClick().sendKeys(Keys.BACK_SPACE); // очистка инпута даты;
         $("[data-test-id=date] [type=tel]").setValue(UserGenerator.getClientInfo().getMeetingDate()); // ввод даты в нужном формате в инпут;
