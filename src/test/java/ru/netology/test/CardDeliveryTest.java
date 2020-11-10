@@ -23,7 +23,7 @@ public class CardDeliveryTest {
         $("[data-test-id=phone] [type=tel]").setValue(UserGenerator.getClientInfo().getPhoneNumber()); // ввод сгенерированного номера телефона;
         $("[data-test-id=agreement]").click(); // клик по чб;
         $("[type=button] [class='button__text']").click(); // клик по копке "Отправить";
-//        $("[data-test-id=success-notification]").shouldBe(Condition.visible); // Проверка нтификейшена (ДОРАБОТАТЬ: сделать проверку текста и даты);
+//        $("[data-test-id=success-notification]").shouldBe(Condition.visible); // Проверка нтификейшена
         $(byText("Успешно!\nВстреча успешно запланирована на " + UserGenerator.getClientInfo().getMeetingDate().format(UserGenerator.getClientInfo().getFormatter()))).shouldBe(Condition.visible);
         $("[data-test-id=date] [class='input__box'] [class='input__control']").doubleClick().sendKeys(Keys.BACK_SPACE); // очистка инпута даты;
         $("[data-test-id=date] [type=tel]").setValue(UserGenerator.getClientInfo().getNewMeetingDate()); // ввод даты в нужном формате в инпут;
