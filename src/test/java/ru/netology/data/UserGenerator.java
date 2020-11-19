@@ -13,7 +13,6 @@ import java.util.Random;
 public class UserGenerator {
 
     private UserGenerator() {
-        int shift = 7;
     }
 
     public static String generateMeetingDate(int shift) {
