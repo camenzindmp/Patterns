@@ -11,7 +11,23 @@ import java.util.Random;
 
 
 public class UserGenerator {
+
     private UserGenerator() {
+        int shift = 7;
+    }
+
+    public static String generateMeetingDate(int shift) {
+        LocalDate meetingDate = LocalDate.now().plusDays(shift);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        return meetingDate.format(formatter);
+    }
+
+    public static String generateCity() {
+        String[] cities = new String[]{"Москва", "Казань", "Владивосток", "Екатеринбург", "Воронеж"};
+        Random generator = new Random();
+        int randomIndex = generator.nextInt(cities.length);
+        ClientInfo.city = cities[randomIndex]; // по задумке берёт рандомную строку(название города) по индексу в массиве;
+        return ClientInfo.city;
     }
 
     @Data
@@ -20,10 +36,6 @@ public class UserGenerator {
         private String fullName;
         private String phoneNumber;
         private String city;
-        private String meetingDate;
-        private String formatter;
-        private String newMeetingDate;
-        private String newFormatter;
     }
 
     public static ClientInfo getClientInfo() {
@@ -31,32 +43,7 @@ public class UserGenerator {
         return new ClientInfo(
                 faker.name().fullName(),
                 faker.phoneNumber().phoneNumber(),
-                generateCity().city,
-                generateMeetingDate().meetingDate,
-                generateMeetingDate().formatter,
-                generateNewMeetingDate().newMeetingDate,
-                generateNewMeetingDate().newFormatter);
+                UserGenerator.generateCity().city);
     }
-
-    public static ClientInfo generateCity() {
-        String[] cities = new String[] {"Москва", "Казань", "Владивосток", "Екатеринбург", "Воронеж"};
-        Random generator = new Random();
-        int randomIndex = generator.nextInt(cities.length);
-        ClientInfo.city = cities[randomIndex];
-        return new ClientInfo().city;
-        }
-
-    public static ClientInfo generateMeetingDate() {
-        LocalDate meetingDate = LocalDate.now().plusDays(7);  // вычисление текущей даты + 7 дней;
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-        return new ClientInfo().formatter;
-    }
-
-    public static ClientInfo generateNewMeetingDate() {
-        LocalDate newMeetingDate = LocalDate.now().plusDays(9);  // вычисление текущей даты + 9 дней;
-        DateTimeFormatter newFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-        return new ClientInfo().newFormatter;
-    }
-
 }
 
