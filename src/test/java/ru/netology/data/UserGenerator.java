@@ -25,8 +25,7 @@ public class UserGenerator {
         String[] cities = new String[]{"Москва", "Казань", "Владивосток", "Екатеринбург", "Воронеж"};
         Random generator = new Random();
         int randomIndex = generator.nextInt(cities.length);
-        ClientInfo.city = cities[randomIndex]; // по задумке берёт рандомную строку(название города) по индексу в массиве;
-        return ClientInfo.city;
+        return cities[randomIndex];
     }
 
     @Data
@@ -42,7 +41,7 @@ public class UserGenerator {
         return new ClientInfo(
                 faker.name().fullName(),
                 faker.phoneNumber().phoneNumber(),
-                UserGenerator.generateCity().city);
+                generateCity());
     }
 }
 
