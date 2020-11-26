@@ -1,14 +1,12 @@
 package ru.netology.test;
 
 import com.codeborne.selenide.Condition;
-import lombok.val;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 import ru.netology.data.UserGenerator;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CardDeliveryTest {
 
@@ -29,6 +27,7 @@ public class CardDeliveryTest {
         $("[data-test-id=date] [class='input__box'] [class='input__control']").doubleClick().sendKeys(Keys.BACK_SPACE); // очистка инпута даты;
         $("[data-test-id=date] [type=tel]").setValue(UserGenerator.generateMeetingDate(9)); // ввод даты в нужном формате в инпут;
         $("[type=button] [class='button__text']").click(); // клик по копке "Запланировать";
+        $(byText("Необходимо подтверждение")).shouldBe(Condition.visible); // проверка нотификейшена о перепланировании даты;
         $(byText("У вас уже запланирована встреча на другую дату. Перепланировать?")).shouldBe(Condition.visible); // проверка нотификейшена о перепланировании даты;
         $("[data-test-id='replan-notification'] [type=button]").click(); // клик по копке "Перепланировать";
         $(byText("Успешно!")).shouldBe(Condition.visible); // проверка 2-го нотификейшена;
