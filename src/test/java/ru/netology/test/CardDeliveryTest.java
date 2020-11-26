@@ -35,3 +35,5 @@ public class CardDeliveryTest {
         $(byText(UserGenerator.generateMeetingDate(9))).shouldBe(Condition.visible); // проверка 2-го нотификейшена;
     }
 }
+
+// для запуска сборки в CI
