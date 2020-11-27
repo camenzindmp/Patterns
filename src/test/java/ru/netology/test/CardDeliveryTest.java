@@ -6,6 +6,7 @@ import org.openqa.selenium.Keys;
 import ru.netology.data.UserGenerator;
 
 import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class CardDeliveryTest {
