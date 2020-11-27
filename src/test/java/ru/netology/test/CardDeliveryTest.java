@@ -21,7 +21,7 @@ public class CardDeliveryTest {
         $("[data-test-id=phone] [type=tel]").setValue(clientInfo.getPhoneNumber()); // ввод сгенерированного номера телефона;
         $("[data-test-id=agreement]").click(); // клик по чб;
         $("[type=button] [class='button__text']").click(); // клик по копке "Запланировать";
-        $(byText("Успешно!")).shouldBe(Condition.visible); // проверка 1-го нотификейшена;
+        $(withText("Успешно!")).shouldBe(Condition.visible); // проверка 1-го нотификейшена;
         $(byText("Встреча успешно запланирована на" )).shouldBe(Condition.visible); // проверка 1-го нотификейшена;
         $(byText(UserGenerator.generateMeetingDate(7))).shouldBe(Condition.visible); // проверка 1-го нотификейшена;
         $("[data-test-id=date] [class='input__box'] [class='input__control']").doubleClick().sendKeys(Keys.BACK_SPACE); // очистка инпута даты;
