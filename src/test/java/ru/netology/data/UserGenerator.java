@@ -39,9 +39,28 @@ public class UserGenerator {
     public static ClientInfo getClientInfo() {
         Faker faker = new Faker(new Locale("ru"));
         return new ClientInfo(
-                faker.name().fullName(),
+                (faker.name().lastName() + " " + faker.name().firstName()).replace("ё", "е").replace("Ё", "Е"),
                 faker.phoneNumber().phoneNumber(),
                 generateCity());
     }
+
+    @Data
+    @AllArgsConstructor
+    public static class ClientInfoWithInvalidName {
+        private String invalidName;
+        private String phoneNumber;
+        private String city;
+    }
+
+    public static ClientInfoWithInvalidName getClientInfoWithInvalidName() {
+        Faker faker = new Faker(new Locale("ru"));
+        return new ClientInfoWithInvalidName(
+                "Некорректное Имё",
+                faker.phoneNumber().phoneNumber(),
+                generateCity()
+                );
+    }
 }
+
+
 
