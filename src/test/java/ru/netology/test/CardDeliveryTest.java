@@ -38,12 +38,12 @@ public class CardDeliveryTest {
     @Test
     void invalidLetterInName() {
         open("http://localhost:9999/");
-        UserGenerator.ClientInfoWithInvalidName clientInfoWithInvalidName = UserGenerator.getClientInfoWithInvalidName();
-        $("[data-test-id=city] input[class=input__control]").setValue(clientInfoWithInvalidName.getCity()); // берем рандомный город из массива CitiesArray;
+        UserGenerator.ClientInfo clientInfo = UserGenerator.getClientInfoWithInvalidName();
+        $("[data-test-id=city] input[class=input__control]").setValue(clientInfo.getCity()); // берем рандомный город из массива CitiesArray;
         $("[data-test-id=date] [class='input__box'] [class='input__control']").doubleClick().sendKeys(Keys.BACK_SPACE); // очистка инпута даты;
         $("[data-test-id=date] [type=tel]").setValue(generateMeetingDate(7)); // ввод даты в нужном формате в инпут;
-        $("[data-test-id=name] [type=text]").setValue(clientInfoWithInvalidName.getInvalidName()); // ввод сгенерированного имени;
-        $("[data-test-id=phone] [type=tel]").setValue(clientInfoWithInvalidName.getPhoneNumber()); // ввод сгенерированного номера телефона;
+        $("[data-test-id=name] [type=text]").setValue(clientInfo.getFullName()); // ввод сгенерированного имени;
+        $("[data-test-id=phone] [type=tel]").setValue(clientInfo.getPhoneNumber()); // ввод сгенерированного номера телефона;
         $("[data-test-id=agreement]").click(); // клик по чб;
         $("[type=button] [class='button__text']").click(); // клик по копке "Запланировать";
         $(byText("Успешно!")).shouldBe(Condition.visible); // проверка 1-го нотификейшена;

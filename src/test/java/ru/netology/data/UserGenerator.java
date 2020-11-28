@@ -44,17 +44,9 @@ public class UserGenerator {
                 generateCity());
     }
 
-    @Data
-    @AllArgsConstructor
-    public static class ClientInfoWithInvalidName {
-        private String invalidName;
-        private String phoneNumber;
-        private String city;
-    }
-
-    public static ClientInfoWithInvalidName getClientInfoWithInvalidName() {
+    public static  ClientInfo getClientInfoWithInvalidName() {
         Faker faker = new Faker(new Locale("ru"));
-        return new ClientInfoWithInvalidName(
+        return new  ClientInfo(
                 "Некорректное Имё",
                 faker.phoneNumber().phoneNumber(),
                 generateCity()
